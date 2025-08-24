@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quick Medical Guide - About Us</title>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #dbeafe, #f8fbff);
+    }
+
+    .about-section {
+      padding: 50px;
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+      margin-top: 50px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .about-section:hover {
+      transform: translateY(-4px);
+    }
+
+    .about-section h2 {
+      color: #003f7f;
+      font-size: 32px;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .about-section p {
+      color: #444;
+      line-height: 1.8;
+      font-size: 16px;
+      margin-bottom: 18px;
+    }
+
+    .features {
+      margin-top: 30px;
+      background: #f0f7ff;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: left;
+    }
+
+    .features h3 {
+      color: #0056b3;
+      margin-bottom: 12px;
+      font-size: 20px;
+    }
+
+    .features ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .features ul li {
+      margin: 10px 0;
+      font-size: 15px;
+      color: #333;
+      padding-left: 25px;
+      position: relative;
+    }
+
+    .features ul li::before {
+      content: "✔";
+      color: #0056b3;
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+    }
+
+    .organisers {
+      margin-top: 30px;
+      background: #e0f2fe;
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    .organisers h3 {
+      margin-bottom: 8px;
+      color: #0056b3;
+      font-size: 18px;
+    }
+
+    .guide {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #444;
+    }
+
+    .guide span {
+      color: #0056b3;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div id="hero"></div>
+
+  <section class="about-section">
+    <h2>About Us</h2>
+    <p>
+      Welcome to the <b>Quick Medical Guide</b> — a project designed 
+      to provide quick and reliable health information. Our goal is to 
+      make care knowledge accessible to everyone in a simple and 
+      organized way.
+    </p>
+    <p>
+      The project provides details about common diseases, remedies, 
+      and connects users to medical professionals. It also includes 
+      a doctor contact section for guidance when needed.
+    </p>
+    <p>
+      This project is developed as part of an academic journey, 
+      combining technology and care for better awareness. 
+      We believe knowledge is the first step towards a healthier life.
+    </p>
+    <p>
+      With Quick Medical Guide, users can gain confidence in understanding 
+      their health and take proactive steps toward well-being.
+    </p>
+    <p>
+      It empowers users to diagnose and manage health conditions proactively, 
+      provides real-time guidance through AI-powered features, 
+      and connects with medicine providers to simplify access to treatment.
+    </p>
+
+    <!-- Features Section -->
+    <div class="features">
+      <h3>Our Features</h3>
+      <ul>
+        <li>AI-powered doctor chatbot for instant guidance</li>
+        <li>Ambulance availability tracking during emergencies</li>
+        <li>Suggestions for natural home remedies</li>
+        <li>Direct links to medicine providers for quick treatment</li>
+      </ul>
+    </div>
+  </section>
+  <script>
+  fetch("base1.html")
+    .then(res => res.text())
+    .then(html => {
+      let parser = new DOMParser();
+      let doc = parser.parseFromString(html, "text/html");
+
+      // Get the hero section from base1.html
+      let hero = doc.getElementById("navbar-section");
+
+      // Inject it into current page
+      document.getElementById("hero").outerHTML = hero.outerHTML;
+    })
+    .catch(err => console.error("Error loading hero:", err));
+</script>
+
+</body>
+</html>

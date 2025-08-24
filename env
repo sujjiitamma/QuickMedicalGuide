@@ -1,0 +1,9 @@
+# Cashfree Sandbox Credentials
+CASHFREE_APP_ID=YOUR_SANDBOX_APP_ID
+CASHFREE_SECRET_KEY=YOUR_SANDBOX_SECRET_KEY
+
+# Your public URL when testing webhooks (e.g., from ngrok)
+BASE_URL=http://localhost:3000
+
+# Optional: tweak
+PORT=3000

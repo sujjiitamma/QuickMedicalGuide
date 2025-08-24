@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health Information & Remedies - Quick Mdeical Guide</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="static/style.css" rel="stylesheet">
+</head>
+<body>
+  <div id="hero"></div>
+
+<div class="container py-4">
+  <div class="text-center mb-5">
+    <h1><i class="fas fa-stethoscope me-3"></i>Health Information & Home Remedies</h1>
+    <p class="lead text-muted">Learn about common health conditions and discover natural remedies</p>
+  </div>
+
+  <div class="row">
+    <!-- Ailments Section -->
+    <div class="col-lg-8">
+      <h2 class="mb-4">Common Health Conditions</h2>
+      <div class="accordion" id="ailmentsAccordion">
+        
+        <!-- Ailment 1 -->
+        <div class="accordion-item mb-3">
+          <h3 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#ailment1">
+              <div class="d-flex justify-content-between w-100 me-3">
+                <span class="fw-bold">Common Cold</span>
+                <span class="badge bg-success">Mild</span>
+              </div>
+            </button>
+          </h3>
+          <div id="ailment1" class="accordion-collapse collapse" data-bs-parent="#ailmentsAccordion">
+            <div class="accordion-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <h6><i class="fas fa-info-circle text-primary me-2"></i>Description</h6>
+                  <p>A viral infection of the nose and throat causing sneezing, congestion, and sore throat.</p>
+
+                  <h6><i class="fas fa-exclamation-triangle text-warning me-2"></i>Symptoms</h6>
+                  <ul>
+                    <li>Runny nose</li>
+                    <li>Cough</li>
+                    <li>Sore throat</li>
+                  </ul>
+                </div>
+                <div class="col-md-6">
+                  <h6><i class="fas fa-search text-info me-2"></i>Causes</h6>
+                  <ul>
+                    <li>Rhinovirus</li>
+                    <li>Weak immunity</li>
+                  </ul>
+
+                  <h6><i class="fas fa-medkit text-success me-2"></i>Treatment</h6>
+                  <p>Rest, hydration, warm fluids, and over-the-counter cold medicines.</p>
+
+                  <div class="mt-3"><small class="text-muted"><i class="fas fa-clock me-1"></i>Duration: 7–10 days</small></div>
+                </div>
+              </div>
+
+              <div class="mt-3 pt-3 border-top">
+                <a href="search_results.html?q=cough" class="btn btn-outline-primary"><i class="fas fa-pills me-2"></i>Find Related Medicines</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ailment 2 -->
+        <div class="accordion-item mb-3">
+          <h3 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#ailment2">
+              <div class="d-flex justify-content-between w-100 me-3">
+                <span class="fw-bold">Migraine</span>
+                <span class="badge bg-warning">Moderate</span>
+              </div>
+            </button>
+          </h3>
+          <div id="ailment2" class="accordion-collapse collapse" data-bs-parent="#ailmentsAccordion">
+            <div class="accordion-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <h6><i class="fas fa-info-circle text-primary me-2"></i>Description</h6>
+                  <p>Severe recurring headaches often accompanied by nausea and light sensitivity.</p>
+
+                  <h6><i class="fas fa-exclamation-triangle text-warning me-2"></i>Symptoms</h6>
+                  <ul>
+                    <li>Headache</li>
+                    <li>Nausea</li>
+                    <li>Sensitivity to light</li>
+                  </ul>
+                </div>
+                <div class="col-md-6">
+                  <h6><i class="fas fa-search text-info me-2"></i>Causes</h6>
+                  <ul>
+                    <li>Stress</li>
+                    <li>Hormonal changes</li>
+                  </ul>
+
+                  <h6><i class="fas fa-medkit text-success me-2"></i>Treatment</h6>
+                  <p>Pain relievers, dark quiet rest, and prescribed migraine medications.</p>
+
+                  <div class="mt-3"><small class="text-muted"><i class="fas fa-clock me-1"></i>Duration: Hours to days</small></div>
+                </div>
+              </div>
+
+              <div class="mt-3 pt-3 border-top">
+                <a href="search_results.html?q=headache" class="btn btn-outline-primary"><i class="fas fa-pills me-2"></i>Find Related Medicines</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Remedies Sidebar -->
+    <div class="col-lg-4">
+      <div class="card sticky-top" style="top:1rem;">
+        <div class="card-header bg-remedy text-white-success text-white">
+          <h5><i class="fas fa-leaf me-2"></i>Home Remedies</h5>
+        </div>
+        <div class="card-body">
+          <!-- Remedy 1 -->
+          <div class="mb-4 pb-3 border-bottom">
+            <h6 class="text-primary">Cold & Flu</h6>
+            <ul class="list-unstyled small">
+              <li><i class="fas fa-leaf text-success me-1"></i>Ginger tea with honey</li>
+              <li><i class="fas fa-leaf text-success me-1"></i>Steam inhalation</li>
+              <li><i class="fas fa-leaf text-success me-1"></i>Saltwater gargle</li>
+            </ul>
+            <div class="small"><strong>Preparation:</strong> Boil ginger in water, add honey, and drink warm.</div>
+          </div>
+          
+          <!-- Remedy 2 -->
+          <div class="mb-4 pb-3">
+            <h6 class="text-primary">Headache</h6>
+            <ul class="list-unstyled small">
+              <li><i class="fas fa-leaf text-success me-1"></i>Peppermint oil massage</li>
+              <li><i class="fas fa-leaf text-success me-1"></i>Stay hydrated</li>
+            </ul>
+          </div>
+
+          <div class="mt-3 pt-3 border-top">
+            <div class="alert alert-warning small">
+              <i class="fas fa-exclamation-triangle me-2"></i>
+              <strong>Disclaimer:</strong> Home remedies are for informational purposes only. Consult a healthcare professional for proper advice.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Emergency Info -->
+  <div class="row mt-5">
+    <div class="col-12">
+      <div class="card border-danger">
+        <div class="card-header bg-remedy text-white-danger text-white">
+          <h5><i class="fas fa-exclamation-triangle me-2"></i>When to Seek Emergency Care</h5>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <h6>Seek immediate medical attention if you experience:</h6>
+              <ul>
+                <li>Severe chest pain</li>
+                <li>Difficulty breathing</li>
+                <li>Sudden severe headache</li>
+                <li>High fever (over 103°F)</li>
+                <li>Signs of stroke</li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <h6>Emergency Contacts:</h6>
+              <p><strong>Emergency Services:</strong> 911</p>
+              <p><strong>Ambulance:</strong> 1-800-AMBULANCE</p>
+              <p><strong>Poison Control:</strong> 1-800-222-1222</p>
+              <a href="tel:911" class="btn btn-danger"><i class="fas fa-phone me-2"></i>Call 911</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// Auto-open accordion if hash is present
+document.addEventListener('DOMContentLoaded', () => {
+  if (window.location.hash) {
+    const target = document.querySelector(window.location.hash);
+    if (target && target.classList.contains('accordion-collapse')) {
+      new bootstrap.Collapse(target, { show: true });
+    }
+  }
+});
+  fetch("base1.html")
+    .then(res => res.text())
+    .then(html => {
+      let parser = new DOMParser();
+      let doc = parser.parseFromString(html, "text/html");
+
+      // Get the hero section from base1.html
+      let hero = doc.getElementById("navbar-section");
+
+      // Inject it into current page
+      document.getElementById("hero").outerHTML = hero.outerHTML;
+    })
+    .catch(err => console.error("Error loading hero:", err));
+
+</script>
+</body>
+</html>

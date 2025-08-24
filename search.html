@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disease Prediction Results</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    body { background-color: #f8f9fa; }
+    .product-card { transition: transform 0.2s; }
+    .product-card:hover { transform: scale(1.03); }
+  </style>
+</head>
+<body>
+  <div id="hero"></div>
+
+  <div class="container py-5">
+    <h2 class="text-center mb-4">Predicted Disease</h2>
+    <div id="results" class="row justify-content-center"></div>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const symptoms = urlParams.get("symptoms");
+
+    async function fetchPrediction() {
+      if (!symptoms) {
+        document.getElementById("results").innerHTML =
+          `<div class="alert alert-warning">⚠️ No symptoms provided.</div>`;
+        return;
+      }
+
+      try {
+        // Call PHP, which calls Flask API
+        const res = await fetch(`predict.php?symptoms=${encodeURIComponent(symptoms)}`);
+        const data = await res.json();
+
+        if (!data.ok) {
+          document.getElementById("results").innerHTML =
+            `<div class="alert alert-danger">❌ ${data.error || "Prediction failed"}</div>`;
+          return;
+        }
+
+        document.getElementById("results").innerHTML = `
+          <div class="col-md-6 col-lg-4">
+            <div class="card shadow-sm product-card">
+              <div class="card-body text-center">
+                <i class="fas fa-stethoscope fa-4x text-primary mb-3"></i>
+                <h5 class="card-title">Prediction: ${data.prediction}</h5>
+                <p class="card-text text-muted">
+                  Based on symptoms: <b>${data.symptoms}</b>
+                </p>
+                <p class="mb-1"><span class="badge bg-info">Probability: ${Math.round(data.confidence * 100)}%</span></p>
+              </div>
+            </div>
+          </div>
+        `;
+      } catch (err) {
+        document.getElementById("results").innerHTML =
+          `<div class="alert alert-danger">⚠️ Error: ${err.message}<br>⚠️ Check if Flask and PHP are running.</div>`;
+      }
+    }
+
+    fetchPrediction();
+  
+  fetch("base1.html")
+    .then(res => res.text())
+    .then(html => {
+      let parser = new DOMParser();
+      let doc = parser.parseFromString(html, "text/html");
+
+      // Get the hero section from base1.html
+      let hero = doc.getElementById("navbar-section");
+
+      // Inject it into current page
+      document.getElementById("hero").outerHTML = hero.outerHTML;
+    })
+    .catch(err => console.error("Error loading hero:", err));
+
+  </script>
+</body>
+</html>

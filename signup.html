@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Multi-Disease Prediction System</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('/prooo/background.png') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .welcome h1 {
+  color: #002147;
+  font-size: 2.5rem;
+}
+
+.welcome p {
+  color: #002147;
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background: rgba(0, 0, 0, 0.3);
+    }
+    header img {
+      height: 60px;
+    }
+    .auth-buttons {
+      display: flex;
+      gap: 15px;
+    }
+    .btn {
+      padding: 10px 20px;
+      background-color: #002147;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+    }
+    .btn:hover {
+      background-color: #003366;
+    }
+    section {
+      display: none;
+      flex: 1;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+    section.active {
+      display: flex;
+    }
+    .form-container {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 30px;
+      border-radius: 10px;
+      width: 300px;
+    }
+    .form-container h2 {
+      margin-bottom: 15px;
+      color: #002147;
+    }
+    .form-container p {
+      font-size: 0.9rem;
+      color:white;
+      margin-bottom: 15px;
+    }
+    .form-container input {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #333;
+}
+
+    .form-container button {
+  width: 100%;
+  padding: 12px;
+  background: #002147;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.form-container button:hover {
+  background: #003366;
+}
+
+    .form-container button:hover {
+      background: #003366;
+    }
+    .form-container a {
+  color: #002147;
+  text-decoration: none;
+  font-weight: bold;
+}
+.form-container a:hover {
+  text-decoration: underline;
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <img src="/prooo/logo.png" alt="Medical Care Logo">
+    <div class="auth-buttons">
+      <span class="btn" onclick="showSection('login')">Login</span>
+      <span class="btn" onclick="showSection('register')">Register</span>
+    </div>
+  </header>
+
+  <!-- Home Section -->
+  <section id="home" class="active">
+    <div class="welcome">
+      <h1>Welcome</h1>
+      <p>Your health matters — and we’re here to help.  
+      Our Multi-Disease Prediction System allows you to check potential ailments early,  
+      connect with medical services, get medicines on time, and access emergency help  
+      whenever you need it.  
+      Log in to take control of your health journey today.</p>
+    </div>
+  </section>
+
+  <!-- Login Section -->
+  <section id="login">
+    <div class="form-container">
+      <h2>Login</h2>
+      <form onsubmit="loginUser(event)">
+        <input type="email" id="loginEmail" placeholder="Email" required>
+        <input type="password" id="loginPassword" placeholder="Password" required>
+        <button type="submit">Login</button>
+      </form>
+      <p><a href="#" onclick="forgotPassword()">Forgot Password?</a></p>
+      <p>Don't have an account?<a href="#" onclick="showSection('register')">Register</a></p>
+    </div>
+  </section>
+  <!-- Register Section -->
+  <section id="register">
+    <div class="form-container">
+      <h2>Register</h2>
+      <form onsubmit="registerUser(event)">
+        <input type="text" id="regName" placeholder="Full Name" required>
+        <input type="email" id="regEmail" placeholder="Email" required>
+        <input type="password" id="regPassword" placeholder="Password" required>
+        <input type="text" id="regLocation" placeholder="Location (City, State)" required>
+        <button type="submit">Register</button>
+      </form>
+      <p>Already have an account? <a href="#" onclick="showSection('login')">Login</a></p>
+    </div>
+  </section>
+<script>
+  function showSection(id) {
+    document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+  }
+  function registerUser(event)
+   {
+    event.preventDefault();
+    const data = new FormData();//sending form fields to the server
+    data.append("name", document.getElementById("regName").value);
+    data.append("email", document.getElementById("regEmail").value);
+    data.append("password", document.getElementById("regPassword").value);
+    data.append("location", document.getElementById("regLocation").value);
+    
+fetch("register.php", { method: "POST", body: data })
+  .then(res => res.text())
+  .then(txt => {
+    if (txt === "success") {
+      alert("Registered successfully!");
+      window.location.href = "base1.html"; // ✅ Navigate after success
+    } else if (txt === "exists") {
+      alert("Email already exists. Please login instead.");
+      showSection("login");
+    } else {
+      alert("Registration: " + txt);
+    }
+  });
+
+  }
+
+  function loginUser(event) {
+    event.preventDefault();
+    const data = new FormData();
+    data.append("email", document.getElementById("loginEmail").value);
+    data.append("password", document.getElementById("loginPassword").value);
+
+    fetch("login.php", { method: "POST", body: data })
+      .then(res => res.text())
+      .then(txt => {
+        if (txt === "success") {
+          alert("Login successful!");
+          window.location.href = "base1.html";
+        } else if (txt === "invalid") {
+          alert("Incorrect password.");
+        } else {
+          alert("User not found.");
+        }
+      });
+  }
+
+  function forgotPassword() {
+    const email = prompt("Enter your registered email:");
+    if (!email) return;
+
+    const form = new FormData();
+    form.append("email", email);
+    fetch("forgot.php", { method: "POST", body: form })
+      .then(res => res.text())
+      .then(txt => {
+        if (txt.includes("reset.php")) {
+          window.location.href = "reset.php?email=" + encodeURIComponent(email);
+        } else {
+          alert("Email not found.");
+        }
+      });
+  }
+</script>
+
+  
+  
+</body>
+</html>
