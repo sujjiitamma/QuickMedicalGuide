@@ -1,6 +1,7 @@
 Flask
 gunicorn
-joblib
+flask-cors
 scikit-learn
 pandas
 numpy
+joblib
